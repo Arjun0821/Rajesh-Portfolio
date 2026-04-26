@@ -30,13 +30,9 @@
     <section class="container py-5">
         <h2 class="mb-4">Contact Me</h2>
 
-        <form action="https://formsubmit.co/rajeshnalubola@gmail.com" method="POST">
+        <form id="contact-form">
 
-            <!-- Disable captcha -->
             <input type="hidden" name="_captcha" value="false">
-
-            <!-- Redirect after submit -->
-            <input type="hidden" name="_next" value="thankyou.html">
 
             <div class="mb-3">
                 <label class="form-label">Name</label>
@@ -54,34 +50,40 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Send Message</button>
-            <div id="success-msg" class="alert alert-success mt-3" style="display:none;">
-    ✅ Mail sent successfully!
-</div>
 
         </form>
+
+        <!-- Success Message -->
+        <div id="success-msg" class="alert alert-success mt-3" style="display:none;">
+            ✅ Mail sent successfully!
+        </div>
+
     </section>
-<script>
-const form = document.getElementById("contact-form");
 
-form.addEventListener("submit", function(e) {
-    e.preventDefault(); // stop default POST redirect
+    <!-- JavaScript -->
+    <script>
+        const form = document.getElementById("contact-form");
 
-    const formData = new FormData(form);
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // stop page reload
 
-    fetch("https://formsubmit.co/rajeshnalubola@gmail.com", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => {
-        if (response.ok) {
-            document.getElementById("success-msg").style.display = "block";
-            form.reset();
-        } else {
-            alert("Something went wrong!");
-        }
-    })
-    .catch(() => alert("Error sending message"));
-});
-</script>
+            const formData = new FormData(form);
+
+            fetch("https://formsubmit.co/rajeshnalubola@gmail.com", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById("success-msg").style.display = "block";
+                    form.reset();
+                } else {
+                    alert("Something went wrong!");
+                }
+            })
+            .catch(() => alert("Error sending message"));
+        });
+    </script>
+
 </body>
 </html>
