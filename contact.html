@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
+    <!-- Navbar -->
     <header class="bg-primary text-white text-center py-3">
         <nav class="container">
             <ul class="nav justify-content-center">
@@ -18,23 +25,38 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Contact Section -->
     <section class="container py-5">
-        <h2>Contact Me</h2>
-        <form>
+        <h2 class="mb-4">Contact Me</h2>
+
+        <form action="https://formsubmit.co/rajeshnalubola@gmail.com" method="POST">
+
+            <!-- Disable captcha -->
+            <input type="hidden" name="_captcha" value="false">
+
+            <!-- Redirect after submit -->
+            <input type="hidden" name="_next" value="thankyou.html">
+
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" required>
+                <input type="text" name="name" class="form-control" placeholder="Enter your name" required>
             </div>
+
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="email" class="form-control" required>
+                <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
             </div>
+
             <div class="mb-3">
                 <label class="form-label">Message</label>
-                <textarea class="form-control" rows="4" required></textarea>
+                <textarea name="message" class="form-control" rows="4" placeholder="Enter your message" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Send</button>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+
         </form>
     </section>
+
 </body>
 </html>
