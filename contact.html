@@ -54,9 +54,34 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Send Message</button>
+            <div id="success-msg" class="alert alert-success mt-3" style="display:none;">
+    ✅ Mail sent successfully!
+</div>
 
         </form>
     </section>
+<script>
+const form = document.getElementById("contact-form");
 
+form.addEventListener("submit", function(e) {
+    e.preventDefault(); // stop default POST redirect
+
+    const formData = new FormData(form);
+
+    fetch("https://formsubmit.co/YOUR-EMAIL@gmail.com", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById("success-msg").style.display = "block";
+            form.reset();
+        } else {
+            alert("Something went wrong!");
+        }
+    })
+    .catch(() => alert("Error sending message"));
+});
+</script>
 </body>
 </html>
